@@ -15,9 +15,6 @@ import java.util.List;
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     @Transactional
-    default Patient save(List<Patient> entity) {
-        return save(entity);
-    }
 
     Patient findByPhoneNo(String phoneNo);
 
@@ -25,4 +22,5 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     void deleteById(Long id);
 
+    void updatePatientById(Patient patient, Long id);
 }

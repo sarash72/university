@@ -19,8 +19,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
     List<Appointment> findByDay(Date day);
 
-    void deleteById(Long id);
-
     Appointment findById(Long id);
 
     Appointment findAppointmentByDayAndAppointmentTime(String day, String appointmentTime);

@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.temporal.Temporal;
 import java.util.Calendar;
@@ -57,7 +55,7 @@ public class AppointmentService {
     }
 
     private String createAppointment(Date start, Date end) {
-        if (start.getMinutes() + 30 <=   end.getMinutes()) {
+        if (start.getMinutes() + appointmentDurationTime <=   end.getMinutes()) {
             return dateUtils.convertDateToStringDay(start) + " - " + dateUtils.convertDateToStringMinutes(start.getMinutes() + 30);
         } else return null;
     }

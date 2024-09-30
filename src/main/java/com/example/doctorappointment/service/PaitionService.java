@@ -6,6 +6,7 @@ import com.example.doctorappointment.model.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,9 +30,9 @@ public class PaitionService {
     }
 
     public List<Appointment> getPatientAppointment(String phoneNo) {
-        Patient patient=patientRepository.findByPhoneNo(phoneNo);
+        Patient patient = patientRepository.findByPhoneNo(phoneNo);
 
-        if(patient==null)
+        if (patient == null)
             throw new NullPointerException("Patient not found");
 
         return appointmentService.getAppointmentByPatient(patient);
@@ -46,7 +47,7 @@ public class PaitionService {
             throw new RuntimeException("plz enter name");
         if (phoneNo == null || phoneNo.isEmpty())
             throw new RuntimeException("plz enter phoneNo");
-        if(appointment==null ||appointment.getAppointmentTime()==null || appointment.getDay()==null)
+        if (appointment == null || appointment.getAppointmentTime() == null || appointment.getDay() == null)
             throw new RuntimeException("plz chose appointment");
 
         Appointment choseAppointment = appointmentService.getAppointmentByDayAndAppointmentTime(appointment.getDay(), appointment.getAppointmentTime());
@@ -60,6 +61,7 @@ public class PaitionService {
         ArrayList<Appointment> appointments = new ArrayList<>();
         appointments.add(appointment);
         patient.setAppointments(appointments);
+        patientRepository.updatePatientById(patient, patient.getId());
 
         return isSelectedSuccessfully;
     }
