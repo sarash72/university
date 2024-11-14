@@ -27,6 +27,7 @@ public class CourseService {
 
     public void addCourseService(CourseDto courseDto) throws ParseException {
         courseRepository.save(courseMapper.convertCourseDtoToCourse(courseDto));
+
         logger.info("added new course :{}", courseDto.toString());
 
     }
