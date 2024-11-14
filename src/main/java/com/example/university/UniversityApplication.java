@@ -1,13 +1,13 @@
-package com.example.doctorappointment;
+package com.example.university;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DoctorAppointmentApplication {
+public class UniversityApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DoctorAppointmentApplication.class, args);
+        SpringApplication.run(UniversityApplication.class, args);
     }
 
 }
